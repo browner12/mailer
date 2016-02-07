@@ -1,4 +1,4 @@
-# mailer
+# Mailer
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -7,8 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+This package provides a convenient consistent way to send emails from your Laravel application.
 
 ## Install
 
@@ -18,13 +17,15 @@ Via Composer
 $ composer require browner12/mailer
 ```
 
-## Setup
+## Generator
 
 Generate a mailer using the artisan command. A good practice is to group models together. For example, a mailer for users and a mailer for events.
 
 ``` sh
 php artisan make:mailer UserMailer
 ```
+
+## Setup
 
 Create a method within your mailer. The following method will be used to send a confirmation email when a user signs up.
 

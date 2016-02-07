@@ -1,0 +1,25 @@
+<?php namespace DummyNamespace;
+
+use browner12\mailer\Mailer;
+
+class DummyClass extends Mailer
+{
+    /**
+     * send an email
+     *
+     * @return $this
+     */
+    public function email()
+    {
+        $this->name = 'name';
+        $this->email = 'email';
+        $this->subject = 'subject';
+        $this->view = 'path/to/view';
+        $this->data = [
+            'custom_key' => 'custom_value',
+        ];
+
+        //chain
+        return $this;
+    }
+}

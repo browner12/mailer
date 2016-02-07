@@ -12,7 +12,7 @@ abstract class Mailer
     /**
      * @var string
      */
-    protected $email = '';
+    protected $email;
 
     /**
      * @var \App\Models\User
@@ -127,7 +127,7 @@ abstract class Mailer
     }
 
     /**
-     * view the email
+     * return the output of the email
      *
      * @return string
      */

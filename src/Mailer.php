@@ -15,11 +15,6 @@ abstract class Mailer
     protected $email;
 
     /**
-     * @var \App\Models\User
-     */
-    protected $user;
-
-    /**
      * @var string
      */
     protected $subject;
@@ -146,5 +141,4 @@ abstract class Mailer
         //return
         return $output;
     }
-
 }

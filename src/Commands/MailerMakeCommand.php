@@ -32,7 +32,7 @@ class MailerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/console.stub';
+        return __DIR__.'/stubs/mailer.stub';
     }
 
     /**

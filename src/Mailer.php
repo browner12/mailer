@@ -131,14 +131,7 @@ abstract class Mailer
         //merge data
         $data = array_merge($this->defaultData, $this->data);
 
-        //setup output
-        $output = '<fieldset style="border-radius:5px; width:95%; margin:5px auto 5px; "><legend>';
-        $output .= $this->subject;
-        $output .= '</legend>';
-        $output .= view($this->view, $data)->render();
-        $output .= '</fieldset>';
-
-        //return
-        return $output;
+        //return output
+        return view($this->view, $data)->render();
     }
 }

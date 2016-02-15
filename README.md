@@ -19,10 +19,32 @@ $ composer require browner12/mailer
 
 ## Generator
 
+Add the generator to your `App\Console\Kernel.php` file to use the generator.
+
+``` php
+protected $commands = [
+    \browner12\mailer\Commands\MailerMakeCommand::class,
+];
+```
+
 Generate a mailer using the artisan command. A good practice is to group models together. For example, a mailer for users and a mailer for events.
 
 ``` sh
 php artisan make:mailer UserMailer
+```
+
+## Publishing
+
+You can choose to publish everything at once
+
+``` php
+php artisan vendor:publish --provider="browner12\mailer\MailerServiceProvider"
+```
+
+or you can publish groups individually.
+
+``` php
+php artisan vendor:publish --provider="browner12\mailer\MailerServiceProvider" --tag="config"
 ```
 
 ## Setup

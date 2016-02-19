@@ -39,23 +39,13 @@ or you can publish groups individually.
 php artisan vendor:publish --provider="browner12\mailer\MailerServiceProvider" --tag="config"
 ```
 
-## Generator
+## Usage
 
-If you wish to use the included generator, open `app/Console/Kernel.php` and add it to the commands property.
-
-``` php
-protected $commands = [
-    \browner12\mailer\Commands\MailerMakeCommand::class,
-];
-```
-
-Then use Artisan to generate a new validator.
+Use Artisan to generate a new validator.
 
 ``` sh
 php artisan make:mailer UserMailer
 ```
-
-## Usage
 
 Create a method within your mailer for every unique email. The following method will be used to send a confirmation email when a user signs up.
 

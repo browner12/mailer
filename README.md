@@ -15,20 +15,14 @@ This package provides a convenient consistent way to send emails from your Larav
 $ composer require browner12/mailer
 ```
 
-## Generator
+## Setup
 
-If you wish to use the included generator, open app/Console/Kernel.php and add it to the commands property.
+Add the service provider to the providers array in  `config/app.php`.
 
 ``` php
-protected $commands = [
-    \browner12\mailer\Commands\MailerMakeCommand::class,
+'providers' => [
+    browner12\mailer\MailerServiceProvider::class,
 ];
-```
-
-Then use Artisan to generate a new validator.
-
-``` sh
-php artisan make:mailer UserMailer
 ```
 
 ## Publishing
@@ -45,7 +39,23 @@ or you can publish groups individually.
 php artisan vendor:publish --provider="browner12\mailer\MailerServiceProvider" --tag="config"
 ```
 
-## Setup
+## Generator
+
+If you wish to use the included generator, open `app/Console/Kernel.php` and add it to the commands property.
+
+``` php
+protected $commands = [
+    \browner12\mailer\Commands\MailerMakeCommand::class,
+];
+```
+
+Then use Artisan to generate a new validator.
+
+``` sh
+php artisan make:mailer UserMailer
+```
+
+## Usage
 
 Create a method within your mailer for every unique email. The following method will be used to send a confirmation email when a user signs up.
 
@@ -61,9 +71,7 @@ method signup($user)
 }
 ```
 
-## Usage
-
-First, instantiate the mailer. Next, setup the email by calling the method of the email you wish to send. If your method requires parameters, pass them in. Finally, chain the `send()` method to send the email.
+To use the mailer, start by instantiating it. Next, setup the email by calling the method of the email you wish to send. If your method requires parameters, pass them in. Finally, chain the `send()` method to send the email.
 
 ``` php
 $mailer = new UserMailer();

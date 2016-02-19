@@ -11,6 +11,10 @@ class MailerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //register commands
+        $this->commands([
+            Commands\MailerMakeCommand::class,
+        ]);
     }
 
     /**

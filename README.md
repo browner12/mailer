@@ -11,15 +11,13 @@ This package provides a convenient consistent way to send emails from your Larav
 
 ## Install
 
-Via Composer
-
 ``` bash
 $ composer require browner12/mailer
 ```
 
 ## Generator
 
-Add the generator to your `App\Console\Kernel.php` file to use the generator.
+If you wish to use the included generator, open app/Console/Kernel.php and add it to the commands property.
 
 ``` php
 protected $commands = [
@@ -27,7 +25,7 @@ protected $commands = [
 ];
 ```
 
-Generate a mailer using the artisan command. A good practice is to group models together. For example, a mailer for users and a mailer for events.
+Then use Artisan to generate a new validator.
 
 ``` sh
 php artisan make:mailer UserMailer
@@ -35,7 +33,7 @@ php artisan make:mailer UserMailer
 
 ## Publishing
 
-You can choose to publish everything at once
+You can publish everything at once
 
 ``` php
 php artisan vendor:publish --provider="browner12\mailer\MailerServiceProvider"
@@ -49,7 +47,7 @@ php artisan vendor:publish --provider="browner12\mailer\MailerServiceProvider" -
 
 ## Setup
 
-Create a method within your mailer. The following method will be used to send a confirmation email when a user signs up.
+Create a method within your mailer for every unique email. The following method will be used to send a confirmation email when a user signs up.
 
 ``` php
 method signup($user)
@@ -65,13 +63,19 @@ method signup($user)
 
 ## Usage
 
-To send a signup email, we will instantiate our `UserMailer`.
-Then call the specific method of the email you would like to send.
-Finally, you can use either the `send()` or `view()` method, depending on if you are testing or actually sending emails.
+To send a signup email, we will instantiate our `UserMailer`. Then call the specific method of the email you would like to send, and pass in any variables that it requires. Finally, you can use either the `send()` or `view()` method, depending on if you are testing or actually sending emails.
 
 ``` php
-$mailer  = new UserMailer();
-$mailer->signup()->send();
+$mailer = new UserMailer();
+$mailer->signup($user)->send();
+```
+
+## Queuing
+
+By default, emails will be queued when you call the `send()` method. To send out emails synchronously, pass `false` as the only argument.
+
+``` php
+$mailer->signup($user)->send(false);
 ```
 
 ## Change log

@@ -122,6 +122,16 @@ abstract class Mailer
     }
 
     /**
+     * send email without queuing
+     *
+     * @return bool
+     */
+    final public function sendSynchronously()
+    {
+        return $this->send(false);
+    }
+
+    /**
      * return the output of the email
      *
      * @return string

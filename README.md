@@ -63,19 +63,26 @@ method signup($user)
 
 ## Usage
 
-To send a signup email, we will instantiate our `UserMailer`. Then call the specific method of the email you would like to send, and pass in any variables that it requires. Finally, you can use either the `send()` or `view()` method, depending on if you are testing or actually sending emails.
+First, instantiate the mailer. Next, setup the email by calling the method of the email you wish to send. If your method requires parameters, pass them in. Finally, chain the `send()` method to send the email.
 
 ``` php
 $mailer = new UserMailer();
+
 $mailer->signup($user)->send();
+```
+
+You may also simply render the email output.
+
+``` php
+echo $mailer->signup($user)->view();
 ```
 
 ## Queuing
 
-By default, emails will be queued when you call the `send()` method. To send out emails synchronously, pass `false` as the only argument.
+By default, emails will be queued when you call the `send()` method. To send out emails synchronously, call `sendSynchronously()` instead.
 
 ``` php
-$mailer->signup($user)->send(false);
+$mailer->signup($user)->sendSynchronously();
 ```
 
 ## Change log

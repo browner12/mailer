@@ -27,12 +27,12 @@ abstract class Mailer
     /**
      * @var array
      */
-    protected $defaultData = [];
+    protected $data = [];
 
     /**
      * @var array
      */
-    protected $data = [];
+    protected $defaultData = [];
 
     /**
      * @var array

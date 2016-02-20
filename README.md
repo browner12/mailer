@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This package provides a convenient consistent way to send emails from your Laravel application.
+This package provides a convenient and consistent way to send emails from your Laravel application.
 
 ## Install
 
@@ -39,9 +39,21 @@ or you can publish groups individually.
 php artisan vendor:publish --provider="browner12\mailer\MailerServiceProvider" --tag="config"
 ```
 
+## Configuration
+
+In your `mailer.php` configuration file, you may set the global data for your mailers. These are often variables that appear in your templates, such as a company name, email, or phone number. This default data will be merged with any data you pass in to a specific mailer.
+
+``` php
+'default_data' => [
+    'company' => 'Acme Co',
+    'email'   => 'info@acme.com',
+    'phone'   => '555-123-4567',
+],
+```
+
 ## Usage
 
-Use Artisan to generate a new validator.
+Use Artisan to generate a new mailer.
 
 ``` sh
 php artisan make:mailer UserMailer
@@ -55,9 +67,12 @@ method signup($user)
     $this->name = $user->name;
     $this->email = $user->email;
     $this->subject = 'Signup Confirmation';
+    $this->view = 'emails/signup';
     $this->data = [
         'user' => $user,
     ];
+    
+    return $this;
 }
 ```
 
@@ -69,7 +84,7 @@ $mailer = new UserMailer();
 $mailer->signup($user)->send();
 ```
 
-You may also simply render the email output.
+You may also render the email output.
 
 ``` php
 echo $mailer->signup($user)->view();
@@ -77,7 +92,7 @@ echo $mailer->signup($user)->view();
 
 ## Queuing
 
-By default, emails will be queued when you call the `send()` method. To send out emails synchronously, call `sendSynchronously()` instead.
+By default, emails will be sent using Laravel's `queueOn()` method. Assuming you have queueing setup in your application, this will add the emails to an 'email' queue. To send out emails synchronously, call `sendSynchronously()` instead.
 
 ``` php
 $mailer->signup($user)->sendSynchronously();

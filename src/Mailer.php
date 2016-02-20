@@ -55,7 +55,7 @@ abstract class Mailer
         $this->mailer = $mailer;
 
         //global variables for email
-        $this->defaultData = config('default_data');
+        $this->defaultData = config('mailer.default_data');
     }
 
     /**

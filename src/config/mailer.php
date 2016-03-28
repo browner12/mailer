@@ -18,4 +18,16 @@ return [
         'phone'   => '555-123-4567',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Directory
+    |--------------------------------------------------------------------------
+    |
+    | By default this package will create new Mailers in the application's
+    | 'Mailers' directory. You may choose to override the directory.
+    |
+    */
+
+    'directory' => 'Mailers',
+
 ];

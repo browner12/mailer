@@ -51,6 +51,12 @@ In your `mailer.php` configuration file, you may set the global data for your ma
 ],
 ```
 
+You may also choose the default directory that new Mailers are created in. By default they go into a `Mailers` directory.
+
+``` php
+'directory' => 'Mailers';
+```
+
 ## Usage
 
 Use Artisan to generate a new mailer.

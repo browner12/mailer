@@ -114,7 +114,8 @@ abstract class Mailer
         }
 
         //make sure to clear out recipient info, so we don't accidentally send multiple times to same person
-        unset($this->name, $this->email, $this->user);
+        $this->name = null;
+        $this->email = null;
     }
 
     /**
